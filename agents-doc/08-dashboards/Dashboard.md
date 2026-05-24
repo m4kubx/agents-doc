@@ -29,6 +29,12 @@ FROM "03-roles-y-patrones"
 
 ## 🚀 Templates de Templater (Listos para usar)
 
+**Los más usados (recomendados):**
+- 00-Principio-No-Generacion
+- 01-Gestion-Contexto-v2
+- 02-Razonamiento-Estructurado
+- 09-Sesion-Completa-Alta-Eficiencia
+
 ```dataview
 LIST
 FROM "07-templates-templater"
@@ -42,6 +48,11 @@ SORT file.name ASC
 - [[00-core/plantilla-razonamiento-estructurado]]
 - [[00-core/plantilla-autocritica-integrada]]
 - [[00-core/patron-orchestrator]]
+
+**Templates avanzados recomendados:**
+- [[07-templates-templater/09-Sesion-Completa-Alta-Eficiencia]]
+- [[07-templates-templater/04-SDD]]
+- [[07-templates-templater/08-Verification-Agent]]
 
 ---
 
