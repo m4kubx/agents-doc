@@ -49,6 +49,9 @@ SORT file.name ASC
 - [[00-core/plantilla-autocritica-integrada]]
 - [[00-core/patron-orchestrator]]
 
+**Guías rápidas:**
+- [[08-dashboards/Cheatsheet-Combos]] ← **Empieza por aquí**
+
 **Templates avanzados recomendados:**
 - [[07-templates-templater/09-Sesion-Completa-Alta-Eficiencia]]
 - [[07-templates-templater/04-SDD]]
