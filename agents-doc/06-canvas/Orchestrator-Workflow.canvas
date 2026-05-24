@@ -1,0 +1,105 @@
+{
+  "nodes": [
+    {
+      "id": "orchestrator",
+      "type": "text",
+      "text": "🎯 ORCHESTRATOR\n\nRol central de coordinación\n- Descompone el proyecto\n- Asigna tareas a roles especializados\n- Mantiene estado global\n- Asegura Principio de No Generación",
+      "x": -400,
+      "y": -200,
+      "width": 320,
+      "height": 180
+    },
+    {
+      "id": "arquitecto",
+      "type": "text",
+      "text": "🏛️ ARQUITECTO\n\n- Diseña arquitectura\n- Define interfaces\n- Identifica riesgos\n- Solo propone (no implementa)",
+      "x": 100,
+      "y": -350,
+      "width": 260,
+      "height": 140
+    },
+    {
+      "id": "developer",
+      "type": "text",
+      "text": "💻 DEVELOPER SENIOR\n\n- Implementa módulos\n- Sigue TDD (Red → Green)\n- Solo hace lo ordenado\n- Usa Principio de No Generación",
+      "x": 100,
+      "y": -150,
+      "width": 260,
+      "height": 140
+    },
+    {
+      "id": "reviewer",
+      "type": "text",
+      "text": "🔍 CODE REVIEWER\n\n- Revisa calidad\n- Señala problemas\n- No modifica código sin orden",
+      "x": 100,
+      "y": 50,
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "verification",
+      "type": "text",
+      "text": "✅ VERIFICATION AGENT\n\n- Audita fidelidad exacta\n- Verifica que se cumplió lo pedido\n- Diferente de Code Reviewer",
+      "x": 100,
+      "y": 220,
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "qa",
+      "type": "text",
+      "text": "🧪 QA ENGINEER\n\n- Diseña estrategia de tests\n- Genera tests de calidad",
+      "x": 500,
+      "y": -150,
+      "width": 240,
+      "height": 120
+    },
+    {
+      "id": "handoff",
+      "type": "text",
+      "text": "🔄 HANDOFF\n\nOrchestrator pasa contexto completo + activa Principio de No Generación en cada asignación",
+      "x": -100,
+      "y": 50,
+      "width": 280,
+      "height": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge1",
+      "fromNode": "orchestrator",
+      "toNode": "arquitecto",
+      "label": "Fase 1"
+    },
+    {
+      "id": "edge2",
+      "fromNode": "orchestrator",
+      "toNode": "developer",
+      "label": "Fase 3"
+    },
+    {
+      "id": "edge3",
+      "fromNode": "orchestrator",
+      "toNode": "reviewer",
+      "label": "Después de implementación"
+    },
+    {
+      "id": "edge4",
+      "fromNode": "orchestrator",
+      "toNode": "verification",
+      "label": "Auditoría de fidelidad"
+    },
+    {
+      "id": "edge5",
+      "fromNode": "orchestrator",
+      "toNode": "qa",
+      "label": "Testing"
+    },
+    {
+      "id": "edge6",
+      "fromNode": "orchestrator",
+      "toNode": "handoff",
+      "label": "Protocolo"
+    }
+  ]
+}

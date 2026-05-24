@@ -1,0 +1,29 @@
+# Obsidian
+.obsidian/workspace.json
+.obsidian/cache/
+.obsidian/plugins/
+.obsidian/themes/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary / backup files
+*.tmp
+*.log
+*.bak
+*~
+
+# Trash folder (Obsidian)
+.trash/
+
+# Any future development artifacts
+node_modules/
+dist/
+build/
+.env
+*.swp
+
+# Windows specific
+$RECYCLE.BIN/
