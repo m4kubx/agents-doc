@@ -177,3 +177,26 @@ Antes de marcar un modulo como terminado, verifica que se cumpla todo:
 - [ ] Backlog actualizado (tareas completadas y nuevas si surgieron)
 
 Si algun item falla, no avances. Corrige primero.
+
+---
+
+## Integración Recomendada: Obsidian
+
+Esta metodología funciona excelentemente dentro de **Obsidian** como vault de conocimiento.
+
+Se recomienda fuertemente usar la configuración "Vault dedicado + Git" descrita en:
+
+? **[obsidian-setup.md](obsidian-setup.md)**
+
+### Beneficios principales de usar Obsidian con agents-doc:
+
+- Acceso rápido a todas las plantillas mediante **Templater**
+- Búsquedas y dashboards potentes con **Dataview**
+- Versionado automático de tus notas y ejemplos personales con **Obsidian Git**
+- Visualización de flujos de Orchestrator y roles usando **Canvas**
+- Todo el ecosistema (metodología oficial + tus proyectos) en un solo lugar versionado
+
+El repositorio ya tiene git inicializado y un `.gitignore` optimizado para Obsidian.
+
+Sigue la guía en `obsidian-setup.md` para configurar tu vault en menos de 10 minutos.
+
