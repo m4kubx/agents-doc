@@ -1,0 +1,42 @@
+---
+# Plantillas y Principios - Base de la metodología Agents-Doc
+# Creada con obsidian-bases skill
+
+filters:
+  or:
+    - 'type == "plantilla"'
+    - 'type == "principio"'
+    - 'type == "patron"'
+
+properties:
+  type:
+    displayName: "Tipo"
+  fase:
+    displayName: "Fase"
+  tags:
+    displayName: "Tags"
+
+views:
+  - type: table
+    name: "Tabla Principal"
+    order:
+      - file.name
+      - type
+      - fase
+      - tags
+    groupBy:
+      property: type
+      direction: ASC
+
+  - type: cards
+    name: "Vista Tarjetas"
+    order:
+      - file.name
+      - type
+      - fase
+
+  - type: list
+    name: "Lista Simple"
+    order:
+      - file.name
+---
