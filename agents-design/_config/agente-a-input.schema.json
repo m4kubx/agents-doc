@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agente A - Input Canonical",
+  "description": "Schema que debe cumplir la documentacion generada por el Agente A para ser procesada por el Agente B",
+  "type": "object",
+  "required": ["project_name", "files"],
+  "properties": {
+    "project_name": {
+      "type": "string",
+      "description": "Nombre del proyecto"
+    },
+    "project_path": {
+      "type": "string",
+      "description": "Ruta relativa a la carpeta del proyecto dentro de 05-proyectos/"
+    },
+    "files": {
+      "type": "object",
+      "description": "Archivos generados por el Agente A",
+      "required": [
+        "00-Project-Brief-Consolidado.md",
+        "01-Business-Model-y-Requerimientos.md",
+        "03-Esquema-Base-de-Datos.md",
+        "04-UI-Vistas-y-Flujos-de-Usuario.md",
+        "05-API-Design.md",
+        "06-Seguridad-y-NFR.md"
+      ],
+      "properties": {
+        "00-Project-Brief-Consolidado.md": {
+          "type": "object",
+          "description": "Resumen ejecutivo del proyecto",
+          "required": ["project_name", "value_proposition", "target_users", "mvp_scope", "tech_stack"],
+          "properties": {
+            "project_name": { "type": "string" },
+            "value_proposition": { "type": "string" },
+            "target_users": { "type": "array", "items": { "type": "string" } },
+            "mvp_scope": { "type": "array", "items": { "type": "string" } },
+            "tech_stack": {
+              "type": "object",
+              "properties": {
+                "frontend": { "type": "string" },
+                "backend": { "type": "string" },
+                "database": { "type": "string" },
+                "auth": { "type": "string" }
+              },
+              "required": ["frontend", "backend", "database"]
+            }
+          }
+        },
+        "01-Business-Model-y-Requerimientos.md": {
+          "type": "object",
+          "description": "Modelo de negocio y requerimientos",
+          "required": ["personas", "user_stories", "mvp_scope"],
+          "properties": {
+            "personas": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "role", "goals", "frustrations"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "role": { "type": "string" },
+                  "goals": { "type": "array", "items": { "type": "string" } },
+                  "frustrations": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            },
+            "user_stories": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "role", "action", "benefit"],
+                "properties": {
+                  "id": { "type": "string" },
+                  "role": { "type": "string" },
+                  "action": { "type": "string" },
+                  "benefit": { "type": "string" }
+                }
+              }
+            },
+            "mvp_scope": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "03-Esquema-Base-de-Datos.md": {
+          "type": "object",
+          "description": "Esquema de base de datos",
+          "required": ["entities"],
+          "properties": {
+            "entities": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "columns"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": ["name", "type"],
+                      "properties": {
+                        "name": { "type": "string" },
+                        "type": { "type": "string" },
+                        "primaryKey": { "type": "boolean" },
+                        "foreignKey": { "type": "string" },
+                        "required": { "type": "boolean" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "04-UI-Vistas-y-Flujos-de-Usuario.md": {
+          "type": "object",
+          "description": "Especificacion de UI, vistas y wireframes",
+          "required": ["views", "user_flows"],
+          "properties": {
+            "views": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "description", "elements"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "description": { "type": "string" },
+                  "elements": { "type": "array", "items": { "type": "string" } },
+                  "states": {
+                    "type": "object",
+                    "properties": {
+                      "loading": { "type": "string" },
+                      "empty": { "type": "string" },
+                      "error": { "type": "string" }
+                    }
+                  },
+                  "roles": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            },
+            "user_flows": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "steps"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "steps": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        },
+        "05-API-Design.md": {
+          "type": "object",
+          "description": "Diseno de API",
+          "required": ["endpoints"],
+          "properties": {
+            "endpoints": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["method", "path", "auth"],
+                "properties": {
+                  "method": { "type": "string" },
+                  "path": { "type": "string" },
+                  "auth": { "type": "boolean" },
+                  "roles": { "type": "array", "items": { "type": "string" } },
+                  "description": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "06-Seguridad-y-NFR.md": {
+          "type": "object",
+          "description": "Seguridad y requisitos no funcionales",
+          "required": ["auth_method", "roles"],
+          "properties": {
+            "auth_method": { "type": "string" },
+            "roles": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "description"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "description": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "description": "Archivo _handoff-to-b.md generado por Agente A",
+      "required": ["project_name", "project_path"],
+      "properties": {
+        "project_name": { "type": "string" },
+        "project_path": { "type": "string" },
+        "documents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

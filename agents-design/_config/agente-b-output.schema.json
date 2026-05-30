@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agente B - Design Specification Output",
+  "description": "Schema que valida el output generado por el Agente B",
+  "type": "object",
+  "required": ["project", "views", "navigation", "auth", "components", "error_views"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "required": ["name", "total_views", "roles"],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "total_views": { "type": "integer" },
+        "roles": { "type": "array", "items": { "type": "string" } },
+        "requires_auth": { "type": "boolean" },
+        "stack": {
+          "type": "object",
+          "properties": {
+            "frontend": { "type": "string" },
+            "backend": { "type": "string" },
+            "database": { "type": "string" },
+            "auth": { "type": "string" }
+          }
+        }
+      }
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "route", "auth"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "route": { "type": "string" },
+          "layout": { "type": "string", "enum": ["sidebar-layout", "minimal", "blank"] },
+          "auth": {
+            "type": "object",
+            "required": ["required"],
+            "properties": {
+              "required": { "type": "boolean" },
+              "roles": { "type": "array", "items": { "type": "string" } },
+              "redirect_on_unauthorized": { "type": "string" }
+            }
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": { "type": "string" },
+                "type": { "type": "string", "enum": ["button", "icon-button", "link"] },
+                "variant": { "type": "string" },
+                "action": { "type": "string" },
+                "roles": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          },
+          "states": {
+            "type": "object",
+            "properties": {
+              "loading": { "type": "string" },
+              "empty": { "type": "string" },
+              "error": { "type": "string" },
+              "success": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "navigation": {
+      "type": "object",
+      "required": ["routes", "sidebar_by_role"],
+      "properties": {
+        "routes": { "type": "array" },
+        "sidebar_by_role": { "type": "object" }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "required": ["roles", "permission_matrix", "route_guards"],
+      "properties": {
+        "roles": { "type": "array" },
+        "permission_matrix": { "type": "object" },
+        "route_guards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "route": { "type": "string" },
+              "guard": { "type": "string" },
+              "fallback": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "type": "object",
+      "properties": {
+        "buttons": { "type": "array" },
+        "forms": { "type": "array" },
+        "tables": { "type": "array" },
+        "modals": { "type": "array" }
+      }
+    },
+    "error_views": {
+      "type": "object",
+      "required": ["403", "404", "500"],
+      "properties": {
+        "403": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "description": { "type": "string" },
+            "layout": { "type": "string" },
+            "actions": { "type": "array" }
+          }
+        },
+        "404": { "type": "object" },
+        "500": { "type": "object" }
+      }
+    },
+    "handoff_generated": {
+      "type": "boolean",
+      "description": "Indica si se genero el archivo _handoff-to-c.md"
+    }
+  }
+}

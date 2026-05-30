@@ -1,0 +1,72 @@
+# Botones - TaskManager
+
+primary-button:
+  description: "Boton de accion principal"
+  variants:
+    - size: [sm, md, lg]
+    - state: [default, hover, active, disabled, loading]
+  props:
+    label: string (required)
+    icon: string (optional)
+    onClick: function (required)
+    disabled: boolean (default: false)
+    loading: boolean (default: false)
+    fullWidth: boolean (default: false)
+  usage: "Crear Tarea, Guardar Cambios, Enviar"
+  examples:
+    - label: "Crear Tarea"
+      icon: plus
+      variant: primary
+      size: md
+    - label: "Guardar Cambios"
+      icon: save
+      variant: primary
+      size: md
+
+danger-button:
+  description: "Boton para acciones destructivas"
+  variants:
+    - size: [sm, md, lg]
+    - state: [default, hover, active, disabled, confirm]
+  props:
+    label: string (required)
+    icon: string (optional)
+    onClick: function (required)
+    requireConfirm: boolean (default: true)
+    confirmText: string (default: "Confirmar")
+    loading: boolean (default: false)
+  usage: "Eliminar Tarea, Eliminar Usuario, Cancelar Suscripcion"
+  examples:
+    - label: "Eliminar Tarea"
+      icon: trash
+      variant: danger
+      size: sm
+    - label: "Eliminar Usuario"
+      icon: user-x
+      variant: danger
+      size: md
+
+icon-button:
+  description: "Boton con solo icono, tipicamente para acciones en tablas"
+  variants:
+    - size: [sm, md]
+    - state: [default, hover, active, disabled]
+    - color: [default, danger]
+  props:
+    icon: string (required)
+    onClick: function (required)
+    tooltip: string (required)
+    disabled: boolean (default: false)
+    color: string (default: "default")
+  usage: "Ver detalle (eye), Editar (pencil), Eliminar (trash), Descargar (download)"
+  examples:
+    - icon: eye
+      tooltip: "Ver Detalle"
+      size: sm
+    - icon: pencil
+      tooltip: "Editar"
+      size: sm
+    - icon: trash
+      tooltip: "Eliminar"
+      color: danger
+      size: sm

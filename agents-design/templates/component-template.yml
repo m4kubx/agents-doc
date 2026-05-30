@@ -1,0 +1,125 @@
+# Catálogo de Componentes UI - [Nombre del Proyecto]
+
+# Botones
+buttons:
+  - name: "primary-button"
+    description: "Botón de acción principal"
+    variants:
+      - size: [sm, md, lg]
+      - state: [default, hover, active, disabled, loading]
+    props:
+      label: string (required)
+      icon: string (optional)
+      onClick: function (required)
+      disabled: boolean (default: false)
+      loading: boolean (default: false)
+      fullWidth: boolean (default: false)
+    usage: "Acciones primarias del sistema (Guardar, Crear, Enviar)"
+
+  - name: "danger-button"
+    description: "Botón para acciones destructivas"
+    variants:
+      - size: [sm, md, lg]
+      - state: [default, hover, active, disabled, confirm]
+    props:
+      label: string (required)
+      icon: string (optional)
+      onClick: function (required)
+      requireConfirm: boolean (default: true)
+    usage: "Eliminar, Borrar, Desactivar"
+
+  - name: "icon-button"
+    description: "Botón solo con ícono"
+    variants:
+      - variant: [ghost, solid, outlined]
+      - state: [default, hover, active, disabled]
+    props:
+      icon: string (required)
+      onClick: function (required)
+      tooltip: string (optional)
+      ariaLabel: string (required)
+    usage: "Acciones en tablas (Editar, Eliminar, Ver)"
+
+# Formularios
+forms:
+  - name: "text-input"
+    description: "Campo de texto estándar"
+    states: [default, focused, filled, error, disabled, readonly]
+    props:
+      label: string
+      placeholder: string
+      value: string
+      onChange: function
+      error: string (optional)
+      helperText: string (optional)
+      maxLength: number (optional)
+    validation: "onBlur + onSubmit"
+
+  - name: "select"
+    description: "Selector desplegable"
+    states: [default, focused, filled, error, disabled, empty]
+    props:
+      label: string
+      options: array of {value, label}
+      value: string
+      onChange: function
+      placeholder: string
+      searchable: boolean (default: false)
+    usage: "Seleccionar de lista predefinida"
+
+  - name: "textarea"
+    description: "Área de texto multilínea"
+    states: [default, focused, filled, error, disabled]
+    props:
+      label: string
+      value: string
+      onChange: function
+      rows: number (default: 4)
+      maxLength: number
+      resize: [none, vertical, both]
+
+# Tablas
+tables:
+  - name: "data-table"
+    description: "Tabla de datos con funcionalidades"
+    states: [loading, empty, error, normal]
+    features:
+      - sortable: boolean (per column)
+      - filterable: boolean
+      - selectable: boolean (multiple rows)
+      - pagination: boolean
+      - rowClick: boolean (navigate to detail)
+    props:
+      columns: array of {key, label, sortable, type}
+      data: array
+      loading: boolean
+      emptyMessage: string
+      errorMessage: string
+      onRowClick: function
+      pageSize: number (default: 20)
+
+# Modales
+todals:
+  - name: "confirm-modal"
+    description: "Modal de confirmación para acciones destructivas"
+    states: [closed, opening, open, closing]
+    props:
+      title: string
+      message: string
+      confirmLabel: string (default: "Confirmar")
+      cancelLabel: string (default: "Cancelar")
+      variant: [danger, warning, info]
+      onConfirm: function
+      onCancel: function
+      backdrop: boolean (default: true, click to close)
+
+  - name: "form-modal"
+    description: "Modal con formulario embebido"
+    states: [closed, opening, open, closing]
+    props:
+      title: string
+      children: ReactNode
+      submitLabel: string
+      onSubmit: function
+      onClose: function
+      size: [sm, md, lg, full]

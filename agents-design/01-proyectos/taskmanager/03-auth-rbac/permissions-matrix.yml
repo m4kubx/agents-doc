@@ -1,0 +1,136 @@
+roles:
+  admin:
+    description: "Acceso total al sistema"
+    views:
+      dashboard: [read]
+      tasks: [read, create, update, delete]
+      users: [read, create, update, delete]
+      reports: [read]
+      settings: [read, update]
+    denied_views: {}
+    sidebar:
+      - label: Dashboard
+        route: /dashboard
+        icon: LayoutDashboard
+      - label: Tareas
+        route: /tasks
+        icon: ListTodo
+      - label: Usuarios
+        route: /users
+        icon: Users
+      - label: Reportes
+        route: /reports
+        icon: BarChart3
+      - label: Configuracion
+        route: /settings
+        icon: Settings
+
+  manager:
+    description: "Gestion de tareas del equipo"
+    views:
+      dashboard: [read]
+      tasks: [read, create, update]
+      tasks_team: [read, create, update]
+      users: [read]
+      reports: [read]
+    denied_views:
+      settings: { redirect: /403, reason: "Solo administradores" }
+      users/create: { redirect: /403, reason: "No tienes permisos para crear usuarios" }
+      users/edit: { redirect: /403, reason: "No tienes permisos para editar usuarios" }
+    sidebar:
+      - label: Dashboard
+        route: /dashboard
+        icon: LayoutDashboard
+      - label: Tareas
+        route: /tasks
+        icon: ListTodo
+      - label: Equipo
+        route: /users
+        icon: Users
+      - label: Reportes
+        route: /reports
+        icon: BarChart3
+
+  user:
+    description: "Gestion de tareas personales"
+    views:
+      dashboard: [read]
+      tasks: [read]
+      tasks_own: [read, create, update]
+    denied_views:
+      tasks/create: { redirect: /tasks, reason: "No puedes crear tareas para otros" }
+      users: { redirect: /403, show_403: true }
+      reports: { redirect: /403, show_403: true }
+      settings: { redirect: /403, show_403: true }
+    sidebar:
+      - label: Dashboard
+        route: /dashboard
+        icon: LayoutDashboard
+      - label: Mis Tareas
+        route: /tasks
+        icon: ListTodo
+
+public_routes:
+  - /login
+  - /register
+  - /forgot-password
+  - /404
+  - /500
+
+route_guards:
+  - route: /users/*
+    guard: role_in [admin]
+    fallback: /403
+  - route: /tasks/create
+    guard: role_in [admin, manager]
+    fallback: /tasks
+  - route: /tasks/*/edit
+    guard: role_in [admin, manager]
+    condition: "manager solo puede editar tareas donde assigned_to pertenece a su equipo"
+    fallback: /403
+  - route: /settings
+    guard: role_in [admin]
+    fallback: /403
+
+error_views:
+  403:
+    title: "Acceso Denegado"
+    description: "No tienes permisos para acceder a esta seccion"
+    illustration: forbidden.svg
+    actions:
+      - label: "Volver al Dashboard"
+        action: navigate /dashboard
+        variant: primary
+      - label: "Solicitar Acceso"
+        action: open_modal request_access
+        variant: secondary
+    layout: minimal
+    http_status: 403
+
+  404:
+    title: "Pagina No Encontrada"
+    description: "La pagina que buscas no existe o ha sido movida"
+    illustration: not-found.svg
+    actions:
+      - label: "Ir al Inicio"
+        action: navigate /
+        variant: primary
+      - label: "Contactar Soporte"
+        action: open_modal contact_support
+        variant: secondary
+    layout: minimal
+    http_status: 404
+
+  500:
+    title: "Error Interno"
+    description: "Ocurrio un error inesperado. Nuestro equipo ha sido notificado."
+    illustration: server-error.svg
+    actions:
+      - label: "Reintentar"
+        action: refresh
+        variant: primary
+      - label: "Contactar Soporte"
+        action: open_modal contact_support
+        variant: secondary
+    layout: minimal
+    http_status: 500

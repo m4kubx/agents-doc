@@ -1,0 +1,94 @@
+# Matriz de Permisos - [Nombre del Proyecto]
+# Formato: Rol × Vista × Acción
+
+roles:
+  admin:
+    description: "[Descripción del rol]"
+    views:
+      [view-id]: [read, create, update, delete]
+    denied_views: {}
+    sidebar:
+      - label: "[Label]"
+        route: /[ruta]
+        icon: [icon-name]
+
+  manager:
+    description: "[Descripción del rol]"
+    views:
+      [view-id]: [read, create, update]
+    denied_views:
+      [view-id]: { redirect: /[ruta-fallback], reason: "[Razón]" }
+    sidebar:
+      - label: "[Label]"
+        route: /[ruta]
+        icon: [icon-name]
+
+  user:
+    description: "[Descripción del rol]"
+    views:
+      [view-id]: [read]
+    denied_views:
+      [view-id]: { redirect: /403, show_403: true }
+    sidebar:
+      - label: "[Label]"
+        route: /[ruta]
+        icon: [icon-name]
+
+# Rutas que NO requieren autenticación
+public_routes:
+  - /login
+  - /register
+  - /forgot-password
+  - /404
+  - /500
+
+# Route Guards: qué protege cada ruta
+route_guards:
+  - route: "[ruta o patrón glob]"
+    guard: "[condición, ej: role_in [admin]]"
+    condition: "[condición adicional opcional]"
+    fallback: "[ruta de redirección cuando falla el guard]"
+
+# Vistas de error
+error_views:
+  403:
+    title: "Acceso Denegado"
+    description: "No tienes permisos para acceder a esta sección"
+    illustration: forbidden.svg
+    actions:
+      - label: "Volver al Inicio"
+        action: navigate /
+        variant: primary
+      - label: "Solicitar Acceso"
+        action: open_modal request_access
+        variant: secondary
+    layout: minimal
+    http_status: 403
+
+  404:
+    title: "Página No Encontrada"
+    description: "La página que buscas no existe o ha sido movida"
+    illustration: not-found.svg
+    actions:
+      - label: "Ir al Inicio"
+        action: navigate /
+        variant: primary
+      - label: "Contactar Soporte"
+        action: open_modal contact_support
+        variant: secondary
+    layout: minimal
+    http_status: 404
+
+  500:
+    title: "Error Interno"
+    description: "Ocurrió un error inesperado. Nuestro equipo ha sido notificado."
+    illustration: server-error.svg
+    actions:
+      - label: "Reintentar"
+        action: refresh
+        variant: primary
+      - label: "Contactar Soporte"
+        action: open_modal contact_support
+        variant: secondary
+    layout: minimal
+    http_status: 500

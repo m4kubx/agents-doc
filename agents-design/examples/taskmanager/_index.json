@@ -1,0 +1,22 @@
+{
+  "project": {
+    "name": "TaskManager",
+    "description": "Sistema de gestión de tareas con autenticación JWT y roles (admin, manager, user)",
+    "version": "1.0.0",
+    "source_agent_a": "agents-doc/05-proyectos/taskmanager/",
+    "generated_by": "Agente B - Design Documentation",
+    "generated_at": "2024-05-30"
+  },
+  "summary": {
+    "total_views": 15,
+    "public_views": 3,
+    "protected_views": 12,
+    "roles": ["admin", "manager", "user"],
+    "entities": ["User", "Task", "Comment"],
+    "components": 12,
+    "route_guards": 8,
+    "error_views": 3
+  },
+  "handoff_generated": true,
+  "handoff_file": "_handoff-to-c.md"
+}

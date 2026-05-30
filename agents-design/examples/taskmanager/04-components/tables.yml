@@ -1,0 +1,57 @@
+# Tablas - TaskManager
+
+data-table:
+  description: "Tabla de datos con funcionalidades completas"
+  features:
+    - sorting: "Click en header para ordenar (asc/desc)"
+    - filtering: "Input de busqueda por columna"
+    - pagination: "Navegacion de paginas con tamanos: 10, 25, 50, 100"
+    - selection: "Checkbox para seleccion multiple"
+    - row-actions: "Iconos de accion por fila (ver, editar, eliminar)"
+    - empty-state: "Mensaje e ilustracion cuando no hay datos"
+    - loading-state: "Skeleton loader con n filas"
+    - error-state: "Mensaje de error con boton reintentar"
+    - responsive: "Card view en mobile, tabla en desktop"
+  props:
+    columns: array<{key: string, label: string, sortable: boolean, filterable: boolean, width: string}>
+    data: array<any>
+    loading: boolean (default: false)
+    pagination:
+      page: number
+      pageSize: number
+      total: number
+    onSort: function (optional)
+    onFilter: function (optional)
+    onPageChange: function (optional)
+    onRowClick: function (optional)
+    selectedRows: array<string> (optional)
+    emptyMessage: string (default: "No hay datos")
+    errorMessage: string (optional)
+  usage: "Listado de tareas, listado de usuarios"
+  examples:
+    - columns:
+        - key: title
+          label: "Titulo"
+          sortable: true
+          filterable: true
+          width: "40%"
+        - key: status
+          label: "Estado"
+          sortable: true
+          filterable: true
+          width: "15%"
+        - key: assignee
+          label: "Asignado a"
+          sortable: true
+          filterable: true
+          width: "20%"
+        - key: priority
+          label: "Prioridad"
+          sortable: true
+          filterable: true
+          width: "10%"
+        - key: actions
+          label: "Acciones"
+          sortable: false
+          filterable: false
+          width: "15%"

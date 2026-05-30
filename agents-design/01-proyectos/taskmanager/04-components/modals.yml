@@ -1,0 +1,68 @@
+# Modales - TaskManager
+
+confirm-modal:
+  description: "Modal de confirmacion para acciones destructivas"
+  states:
+    - closed: "No visible"
+    - opening: "Animacion fade-in + scale"
+    - open: "Fondo semitransparente, modal centrado"
+    - closing: "Animacion fade-out + scale"
+    - loading: "Boton confirmar deshabilitado con spinner"
+    - error: "Mensaje de error abajo del titulo"
+    - success: "Modal se cierra, toast success"
+  props:
+    title: string (required)
+    message: string (required)
+    confirmLabel: string (default: "Confirmar")
+    cancelLabel: string (default: "Cancelar")
+    variant: [danger, warning, info] (default: danger)
+    loading: boolean (default: false)
+    onConfirm: function (required)
+    onCancel: function (required)
+    icon: string (optional)
+  usage: "Confirmar eliminacion de tarea, confirmar eliminacion de usuario"
+  examples:
+    - title: "Eliminar Tarea"
+      message: "Esta seguro de eliminar la tarea \"[nombre tarea]\"? Esta accion no se puede deshacer."
+      confirmLabel: "Eliminar"
+      cancelLabel: "Cancelar"
+      variant: danger
+
+form-modal:
+  description: "Modal con formulario embebido"
+  states:
+    - closed: "No visible"
+    - open: "Modal centrado con formulario"
+    - loading: "Boton submit deshabilitado, campos deshabilitados"
+    - validation-error: "Errores en campos especificos"
+    - server-error: "Mensaje de error general"
+    - success: "Modal se cierra, lista se actualiza"
+  props:
+    title: string (required)
+    fields: array<FormField> (required)
+    submitLabel: string (default: "Guardar")
+    cancelLabel: string (default: "Cancelar")
+    size: [sm, md, lg] (default: md)
+    loading: boolean (default: false)
+    onSubmit: function (required)
+    onCancel: function (required)
+    initialValues: object (optional)
+  usage: "Crear tarea rapida, asignar usuario, filtrar avanzado"
+  examples:
+    - title: "Crear Tarea Rapida"
+      size: md
+      fields:
+        - type: text-input
+          label: "Titulo"
+          required: true
+        - type: select
+          label: "Prioridad"
+          options:
+            - {value: baja, label: "Baja"}
+            - {value: media, label: "Media"}
+            - {value: alta, label: "Alta"}
+        - type: select
+          label: "Asignar a"
+          searchable: true
+        - type: textarea
+          label: "Descripcion"

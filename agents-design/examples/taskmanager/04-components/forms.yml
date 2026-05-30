@@ -1,0 +1,62 @@
+# Formularios - TaskManager
+
+text-input:
+  description: "Campo de texto estandar"
+  states:
+    - default: "Borde gris claro, fondo blanco"
+    - focused: "Borde primary, sombra azul suave"
+    - filled: "Borde gris, icono check verde"
+    - error: "Borde rojo, mensaje de error abajo"
+    - disabled: "Fondo gris claro, cursor not-allowed"
+    - loading: "Skeleton pulse"
+  props:
+    label: string (required)
+    placeholder: string (optional)
+    type: [text, email, password, number, url] (default: text)
+    required: boolean (default: false)
+    disabled: boolean (default: false)
+    error: string (optional)
+    helperText: string (optional)
+    icon: string (optional)
+    maxLength: number (optional)
+  usage: "Nombre de tarea, email, descripcion, password"
+
+select:
+  description: "Selector desplegable"
+  states:
+    - default: "Borde gris, texto placeholder"
+    - focused: "Borde primary, dropdown abierto"
+    - selected: "Muestra opcion seleccionada"
+    - error: "Borde rojo"
+    - disabled: "Fondo gris"
+    - empty: "Muestra 'Sin opciones disponibles'"
+    - loading: "Spinner en el dropdown"
+  props:
+    label: string (required)
+    options: array<{value: string, label: string}> (required)
+    placeholder: string (optional)
+    multiple: boolean (default: false)
+    searchable: boolean (default: false)
+    required: boolean (default: false)
+    disabled: boolean (default: false)
+    error: string (optional)
+  usage: "Estado de tarea (Pendiente/En Progreso/Completada), Asignar a usuario, Prioridad"
+
+textarea:
+  description: "Area de texto multilinea"
+  states:
+    - default: "Borde gris claro"
+    - focused: "Borde primary"
+    - filled: "Contenido presente"
+    - error: "Borde rojo"
+    - disabled: "Fondo gris"
+  props:
+    label: string (required)
+    placeholder: string (optional)
+    rows: number (default: 3)
+    maxLength: number (optional)
+    required: boolean (default: false)
+    disabled: boolean (default: false)
+    error: string (optional)
+    resizable: boolean (default: true)
+  usage: "Descripcion de tarea, comentarios, notas"
