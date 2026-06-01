@@ -200,3 +200,20 @@ El repositorio ya tiene git inicializado y un `.gitignore` optimizado para Obsid
 
 Sigue la gu�a en `obsidian-setup.md` para configurar tu vault en menos de 10 minutos.
 
+
+
+---
+
+## ☕ Apoya el Proyecto
+
+Si este proyecto te ha sido útil o te interesa, considera apoyarlo. ¡Cualquier granito de arena ayuda a mantenerlo vivo!
+
+| Método | Info |
+|--------|------|
+| **Binance ID** | `237970558` |
+| **PIX (Brasil)** | `inversionesjemabyte@gmail.com` |
+| **QR Binance** | [![QR](https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https%3A%2F%2Fapp.binance.com%2Funi-qr%2FPvNsuEiD)](https://app.binance.com/uni-qr/PvNsuEiD) |
+| **WhatsApp** | [wa.me/5541996625172](https://wa.me/5541996625172) |
+
+¡Gracias por tu apoyo! ❤️
+
