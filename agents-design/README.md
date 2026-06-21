@@ -63,7 +63,15 @@ agents-doc/
     |   |-- auth-matrix-template.yml
     |   |-- component-template.yml
     |   |-- error-view-template.md
-    |   +-- handoff-to-c-template.md
+    |   |-- mockup-template.html          <-- Mockup HTML autonomo (CSS inline)
+    |   |-- flow-template.md              <-- Flujo de usuario con Mermaid
+    |   |-- user-journey-map-template.md  <-- Mapa de viaje por rol
+    |   |-- approval-checklist-template.md <-- Checklist de revision de diseno
+    |   |-- tdd-strategy-template.md      <-- Estrategia TDD para Agente C
+    |   |-- test-rbac-template.md         <-- Tests RBAC por endpoint
+    |   |-- test-component-template.md    <-- Tests de componentes UI
+    |   |-- test-e2e-template.md          <-- Tests E2E con Playwright
+    |   +-- handoff-to-c-template.md      <-- Handoff (solo tras aprobacion)
     |
     |-- examples/                       <-- Ejemplos de referencia
     |   +-- taskmanager/                <-- Ejemplo: TaskManager
@@ -74,7 +82,10 @@ agents-doc/
     |       |-- 03-auth-rbac/           (permissions-matrix.yml)
     |       |-- 04-components/          (componentes UI definidos)
     |       |-- 05-states/              (estados por vista)
-    |       +-- 06-prototypes/          (flujos de usuario)
+    |       |-- 06-prototypes/          (flujos de usuario basicos)
+    |       |-- 07-mockups/             (mockups HTML + galeria _index.html)
+    |       |-- 08-flows/               (flujos completos: auth, crud, journey)
+    |       +-- 09-approval/            (checklist + approval-status.json)
     |
     +-- 01-proyectos/                   <-- Destino de outputs futuros
         +-- .gitkeep
@@ -242,11 +253,19 @@ cd scripts && node validate-agente-a.mjs <ruta-del-proyecto>
 | `_config/agente-a-input.schema.json` | Schema JSON que valida el input del Agente A |
 | `_config/agente-b-output.schema.json` | Schema JSON que valida el output del Agente B |
 | `templates/handoff-to-b-template.md` | Template para que A genere el handoff hacia B |
-| `templates/handoff-to-c-template.md` | Template para que B genere el handoff hacia C |
+| `templates/handoff-to-c-template.md` | Template para que B genere el handoff hacia C (solo tras aprobacion) |
 | `templates/view-template.md` | Plantilla para documentar vistas/pantallas |
 | `templates/component-template.yml` | Plantilla para documentar componentes UI |
 | `templates/auth-matrix-template.yml` | Plantilla para matriz de permisos RBAC |
 | `templates/error-view-template.md` | Plantilla para vistas de error (403/404/500) |
+| `templates/mockup-template.html` | Plantilla para mockups HTML autonomos (CSS inline) |
+| `templates/flow-template.md` | Plantilla para flujos de usuario con Mermaid |
+| `templates/user-journey-map-template.md` | Plantilla para mapa de viaje por rol |
+| `templates/approval-checklist-template.md` | Plantilla para el checklist de revision de diseno |
+| `templates/tdd-strategy-template.md` | Estrategia TDD para incluir en el handoff a C |
+| `templates/test-rbac-template.md` | Plantilla de tests RBAC por endpoint |
+| `templates/test-component-template.md` | Plantilla de tests de componentes UI |
+| `templates/test-e2e-template.md` | Plantilla de tests E2E con Playwright |
 | `scripts/validate-agente-a-input.sh` | Script Bash de validacion |
 | `scripts/validate-agente-a.mjs` | Script Node.js de validacion con schema |
 | `examples/taskmanager/` | Ejemplo completo de referencia |
@@ -260,7 +279,9 @@ cd scripts && node validate-agente-a.mjs <ruta-del-proyecto>
 ```mermaid
 graph LR
     A[Agente A<br/>Documentacion] -->|_handoff-to-b.md| B[Agente B<br/>Design Specs]
-    B -->|_handoff-to-c.md| C[Agente C<br/>Implementacion]
+    B -->|mockups + flows| R{Humano<br/>Aprueba?}
+    R -->|approved| C[Agente C<br/>Implementacion]
+    R -->|changes| B
     
     subgraph "Input (Agente A)"
         A1[00-Project-Brief]
@@ -278,8 +299,12 @@ graph LR
         B4[04-components/]
         B5[05-states/]
         B6[06-prototypes/]
+        B7[07-mockups/]
+        B8[08-flows/]
+        B9[09-approval/]
     end
     
     A --> A1 & A2 & A3 & A4 & A5 & A6
-    B1 & B2 & B3 & B4 & B5 & B6 --> B
+    B1 & B2 & B3 & B4 & B5 & B6 & B7 & B8 & B9 --> B
 ```
+

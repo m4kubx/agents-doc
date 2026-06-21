@@ -81,15 +81,21 @@ Generar en:
 - `04-components/` — Catalogo de componentes UI (botones, formularios, tablas, modales)
 - `05-states/` — Documentacion de estados: loading, empty, error, success por cada vista
 - `06-prototypes/` — Diagramas de flujo de usuario con Mermaid (login, CRUD, auth flow)
+- `07-mockups/` — Mockups HTML autonomos (CSS inline, sin JS) con estados toggle; incluye galeria `_index.html`
+- `08-flows/` — Flujos de usuario completos: user-journey-map, auth-flow, crud-flow
+- `09-approval/` — Approval gate: `design-review-checklist.md` + `approval-status.json`
+- `_design-package.md` — Resumen del paquete de diseno
 - `_index.json` — Indice del proyecto
-- `_handoff-to-c.md` — Prompt auto-contenido para el Agente C
+- `_handoff-to-c.md` — Prompt auto-contenido para el Agente C (SOLO se genera tras aprobacion humana)
 
 ### Reglas para el Agente B
-- NO generar codigo. Solo Markdown, YAML y Mermaid.
+- NO generar codigo funcional. Solo Markdown, YAML, Mermaid y mockups HTML autonomos (CSS inline).
 - Toda vista debe incluir: auth requerido, acciones disponibles, estados (loading, empty, error, success)
 - Incluir SIEMPRE vistas de error: 403 (Forbidden), 404 (Not Found), 500 (Server Error)
 - RBAC completo: matriz Rol x Vista x Accion con redirects explicitos
-- El `_handoff-to-c.md` debe ser auto-contenido (no depender de los docs originales)
+- Cada vista en `01-views/` debe tener un mockup HTML correspondiente en `07-mockups/`
+- **Approval gate:** NO generar `_handoff-to-c.md` hasta que el humano apruebe los mockups. El handoff solo se genera cuando `09-approval/approval-status.json` marca `approved_for_implementation: true`
+- Estrategia TDD obligatoria en el `_handoff-to-c.md` (cobertura minima >=80% backend, >=70% frontend)
 - Usa las plantillas en `agents-doc/agents-design/templates/` como referencia
 
 ---
@@ -149,11 +155,15 @@ desktop/agents-doc/
 +-- agents-design/                        <-- Agente B (Design Docs)
 |   +-- _config/agente-b-prompt.md        <-- Prompt maestro de B
 |   +-- _config/agente-a-input.schema.json <-- Schema de validacion
-|   +-- templates/                        <-- Plantillas de output
+|   +-- templates/                        <-- Plantillas de output (mockup, flow, tdd, approval...)
 |   +-- scripts/                          <-- Scripts de validacion
 |   +-- examples/taskmanager/             <-- Ejemplo de referencia
 |   +-- 01-proyectos/[proyecto]/          <-- Output de B
-|       +-- _handoff-to-c.md              <-- Input para Agente C
+|       +-- 01-views/ ... 06-prototypes/  <-- Especificaciones (vistas, nav, rbac, estados)
+|       +-- 07-mockups/                   <-- Mockups HTML + galeria _index.html
+|       +-- 08-flows/                     <-- Flujos de usuario completos
+|       +-- 09-approval/                  <-- Approval gate (checklist + status.json)
+|       +-- _handoff-to-c.md              <-- Input para Agente C (SOLO tras aprobacion humana)
 |
 +-- _start-here.md                       <-- ESTE ARCHIVO (punto de partida)
 ```

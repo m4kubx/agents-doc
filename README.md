@@ -18,15 +18,15 @@ Trata al agente como un arquitecto/desarrollador junior muy rapido, al que hay q
 
 ## Principio Fundamental (obligatorio)
 
-**El agente NUNCA genera código, decisiones, funcionalidades ni nada que no le hayas ordenado explícitamente.**
+**El agente NUNCA genera cÃ³digo, decisiones, funcionalidades ni nada que no le hayas ordenado explÃ­citamente.**
 
 - Si tiene dudas ? debe preguntar.
 - Si quiere proponer algo ? debe pedir permiso primero.
-- Si falta información ? debe pedirla antes de actuar.
+- Si falta informaciÃ³n ? debe pedirla antes de actuar.
 
-Este principio está documentado en detalle en [principio-no-generacion-sin-orden.md](principio-no-generacion-sin-orden.md).
+Este principio estÃ¡ documentado en detalle en [principio-no-generacion-sin-orden.md](principio-no-generacion-sin-orden.md).
 
-**Recomendación**: Copia el "Prompt de activación del principio" al inicio de **todos** tus chats con agentes.
+**RecomendaciÃ³n**: Copia el "Prompt de activaciÃ³n del principio" al inicio de **todos** tus chats con agentes.
 
 ---
 
@@ -44,43 +44,43 @@ Usa estas plantillas listas para copiar y pegar en cada fase:
 | [guia-iteracion-refactorizacion.md](guia-iteracion-refactorizacion.md) | Cuando necesites mejorar codigo existente sin romperlo |
 | [principio-no-generacion-sin-orden.md](principio-no-generacion-sin-orden.md) | **Siempre** (principio fundamental) |
 | [guia-tdd-con-agentes.md](guia-tdd-con-agentes.md) | Cuando quieras aplicar TDD con agentes (recomendado) |
-| [plantilla-sdd.md](plantilla-sdd.md) | Antes de implementar lógica compleja (recomendado) |
-| [patron-orchestrator.md](patron-orchestrator.md) | Proyectos medianos/grandes con múltiples agentes |
+| [plantilla-sdd.md](plantilla-sdd.md) | Antes de implementar lÃ³gica compleja (recomendado) |
+| [patron-orchestrator.md](patron-orchestrator.md) | Proyectos medianos/grandes con mÃºltiples agentes |
 | [matriz-roles-agentes.md](matriz-roles-agentes.md) | Cuando necesites elegir el rol correcto del agente |
 | [workflow-git-con-agentes.md](workflow-git-con-agentes.md) | Siempre (control de versiones profesional) |
-| [ejemplos-por-stack.md](ejemplos-por-stack.md) | Para ver la metodología aplicada en stacks reales |
+| [ejemplos-por-stack.md](ejemplos-por-stack.md) | Para ver la metodologÃ­a aplicada en stacks reales |
 
 **Nuevas plantillas de alta eficiencia (recomendadas para uso frecuente):**
 | Plantilla | Cuando usarla |
 |-----------|---------------|
-| [plantilla-razonamiento-estructurado.md](plantilla-razonamiento-estructurado.md) | Antes de cualquier decisión compleja (arquitectura, debugging, SDD, tradeoffs) |
+| [plantilla-razonamiento-estructurado.md](plantilla-razonamiento-estructurado.md) | Antes de cualquier decisiÃ³n compleja (arquitectura, debugging, SDD, tradeoffs) |
 | [plantilla-autocritica-integrada.md](plantilla-autocritica-integrada.md) | Antes de aceptar cualquier respuesta importante del agente |
-| [plantilla-gestion-contexto-v2.md](plantilla-gestion-contexto-v2.md) | Proyectos medianos/grandes o de larga duración (reemplaza a la v1) |
-| [plantilla-suposiciones-explicitas.md](plantilla-suposiciones-explicitas.md) | Antes de proponer o implementar cualquier funcionalidad con lógica de negocio |
+| [plantilla-gestion-contexto-v2.md](plantilla-gestion-contexto-v2.md) | Proyectos medianos/grandes o de larga duraciÃ³n (reemplaza a la v1) |
+| [plantilla-suposiciones-explicitas.md](plantilla-suposiciones-explicitas.md) | Antes de proponer o implementar cualquier funcionalidad con lÃ³gica de negocio |
 | [plantilla-formato-salida-estructurado.md](plantilla-formato-salida-estructurado.md) | Cuando necesites salidas consistentes, parseables o para handoff entre agentes |
 
-**Guías y plantillas de soporte avanzado:**
+**GuÃ­as y plantillas de soporte avanzado:**
 | Recurso | Cuando usarla |
 |---------|---------------|
-| [guia-recuperacion-agente.md](guia-recuperacion-agente.md) | Cuando el agente se desvió, alucinó o violó el principio |
+| [guia-recuperacion-agente.md](guia-recuperacion-agente.md) | Cuando el agente se desviÃ³, alucinÃ³ o violÃ³ el principio |
 | [plantilla-prompt-optimizer.md](plantilla-prompt-optimizer.md) | Para mejorar continuamente tus prompts y los de tus agentes |
-| [guia-eficiencia-avanzada.md](guia-eficiencia-avanzada.md) | Para entender el "por qué" de las técnicas avanzadas (usuarios experimentados) |
+| [guia-eficiencia-avanzada.md](guia-eficiencia-avanzada.md) | Para entender el "por quÃ©" de las tÃ©cnicas avanzadas (usuarios experimentados) |
 
-También actualiza regularmente tus prompts usando el optimizador y ten a mano la guía de recuperación para cuando algo se salga de control.
+TambiÃ©n actualiza regularmente tus prompts usando el optimizador y ten a mano la guÃ­a de recuperaciÃ³n para cuando algo se salga de control.
 
 ---
 
-## Técnicas Avanzadas de Eficiencia (nuevo en 2026)
+## TÃ©cnicas Avanzadas de Eficiencia (nuevo en 2026)
 
-Estas técnicas de prompt engineering de alto impacto elevan significativamente la precisión y reducen iteraciones:
+Estas tÃ©cnicas de prompt engineering de alto impacto elevan significativamente la precisiÃ³n y reducen iteraciones:
 
 - **Razonamiento Estructurado Forzado** (`plantilla-razonamiento-estructurado.md`): Obliga al agente a pensar paso a paso + verificar cada paso antes de concluir. Reduce soluciones superficiales.
-- **Auto-Crítica Integrada** (`plantilla-autocritica-integrada.md`): El agente genera borrador interno, se critica contra la instrucción original y corrige **antes** de mostrarte la respuesta.
-- **Surfacing de Suposiciones** (`plantilla-suposiciones-explicitas.md`): Obliga al agente a listar **todas** las suposiciones (dominio, datos, técnicas) con riesgo antes de proponer. Evita sorpresas tardías.
-- **Formatos de Salida Estructurados** (`plantilla-formato-salida-estructurado.md`): Fuerza schemas consistentes (JSON, tablas, secciones fijas) para que las salidas sean fáciles de consumir por humanos o por otros agentes.
-- **Gestión de Contexto Avanzada** (`plantilla-gestion-contexto-v2.md`): Memory Bank vivo + context filtering + capas (Executive Summary + Detailed + Recent). Ideal para proyectos grandes.
+- **Auto-CrÃ­tica Integrada** (`plantilla-autocritica-integrada.md`): El agente genera borrador interno, se critica contra la instrucciÃ³n original y corrige **antes** de mostrarte la respuesta.
+- **Surfacing de Suposiciones** (`plantilla-suposiciones-explicitas.md`): Obliga al agente a listar **todas** las suposiciones (dominio, datos, tÃ©cnicas) con riesgo antes de proponer. Evita sorpresas tardÃ­as.
+- **Formatos de Salida Estructurados** (`plantilla-formato-salida-estructurado.md`): Fuerza schemas consistentes (JSON, tablas, secciones fijas) para que las salidas sean fÃ¡ciles de consumir por humanos o por otros agentes.
+- **GestiÃ³n de Contexto Avanzada** (`plantilla-gestion-contexto-v2.md`): Memory Bank vivo + context filtering + capas (Executive Summary + Detailed + Recent). Ideal para proyectos grandes.
 
-**Recomendación**: Combina estas 5 técnicas + el Principio de No Generación para obtener el máximo nivel de control y calidad actualmente posible con agentes.
+**RecomendaciÃ³n**: Combina estas 5 tÃ©cnicas + el Principio de No GeneraciÃ³n para obtener el mÃ¡ximo nivel de control y calidad actualmente posible con agentes.
 
 ---
 
@@ -96,7 +96,7 @@ Estas técnicas de prompt engineering de alto impacto elevan significativamente l
 | Aceptar la primera respuesta sin revision | Bugs y deuda tecnica garantizados |
 | Sobrecargar un solo chat infinito | Perdida de foco y calidad |
 | No pedir tests | Errores obvios que se descubren tarde |
-| Permitir que el agente genere o proponga sin orden explícita | El agente inventa funcionalidades, decide tecnologías y deriva el proyecto |
+| Permitir que el agente genere o proponga sin orden explÃ­cita | El agente inventa funcionalidades, decide tecnologÃ­as y deriva el proyecto |
 
 ---
 
@@ -159,7 +159,7 @@ Plan > Revisar > Implementar > Probar > Ajustar
 2. Revisas y corriges el enfoque
 3. Pides implementacion del modulo
 4. Pides tests que validen el modulo (usa plantilla-tests-automaticos.md)
-5. Pides autocrítica: Que riesgos tiene esta solucion?
+5. Pides autocrÃ­tica: Que riesgos tiene esta solucion?
 6. **Valida con la checklist antes de avanzar** (ver abajo)
 7. Pasas al siguiente modulo (usa plantilla-gestion-contexto.md en el proximo chat)
 
@@ -180,25 +180,25 @@ Si algun item falla, no avances. Corrige primero.
 
 ---
 
-## Integración Recomendada: Obsidian
+## IntegraciÃ³n Recomendada: Obsidian
 
-Esta metodología funciona excelentemente dentro de **Obsidian** como vault de conocimiento.
+Esta metodologÃ­a funciona excelentemente dentro de **Obsidian** como vault de conocimiento.
 
-Se recomienda fuertemente usar la configuración "Vault dedicado + Git" descrita en:
+Se recomienda fuertemente usar la configuraciÃ³n "Vault dedicado + Git" descrita en:
 
 ? **[obsidian-setup.md](obsidian-setup.md)**
 
 ### Beneficios principales de usar Obsidian con agents-doc:
 
-- Acceso rápido a todas las plantillas mediante **Templater**
-- Búsquedas y dashboards potentes con **Dataview**
-- Versionado automático de tus notas y ejemplos personales con **Obsidian Git**
-- Visualización de flujos de Orchestrator y roles usando **Canvas**
-- Todo el ecosistema (metodología oficial + tus proyectos) en un solo lugar versionado
+- Acceso rÃ¡pido a todas las plantillas mediante **Templater**
+- BÃºsquedas y dashboards potentes con **Dataview**
+- Versionado automÃ¡tico de tus notas y ejemplos personales con **Obsidian Git**
+- VisualizaciÃ³n de flujos de Orchestrator y roles usando **Canvas**
+- Todo el ecosistema (metodologÃ­a oficial + tus proyectos) en un solo lugar versionado
 
 El repositorio ya tiene git inicializado y un `.gitignore` optimizado para Obsidian.
 
-Sigue la guía en `obsidian-setup.md` para configurar tu vault en menos de 10 minutos.
+Sigue la guÃ­a en `obsidian-setup.md` para configurar tu vault en menos de 10 minutos.
 
 
 
