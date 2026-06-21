@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskManager — Galería de Mockups</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f1f5f9; color: #1e293b; padding: 40px; }
+  h1 { font-size: 28px; margin-bottom: 8px; }
+  .subtitle { color: #64748b; margin-bottom: 32px; }
+  .status-bar { display: flex; gap: 24px; margin-bottom: 32px; flex-wrap: wrap; }
+  .status-badge { padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 500; }
+  .status-pending { background: #fef3c7; color: #b45309; }
+  .status-approved { background: #d1fae5; color: #065f46; }
+  .status-changes { background: #fee2e2; color: #991b1b; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .card { background: #fff; border-radius: 10px; border: 1px solid #e2e8f0; overflow: hidden; transition: box-shadow 0.2s; }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .card-preview { height: 180px; background: #f8fafc; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #e2e8f0; font-size: 32px; color: #94a3b8; }
+  .card-body { padding: 16px; }
+  .card-body h3 { font-size: 15px; margin-bottom: 4px; }
+  .card-body p { font-size: 13px; color: #64748b; margin-bottom: 10px; }
+  .card-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #e2e8f0; color: #475569; }
+  .tag-sidebar { background: #dbeafe; color: #1d4ed8; }
+  .tag-minimal { background: #f3e8ff; color: #7c3aed; }
+  .tag-public { background: #d1fae5; color: #065f46; }
+  .tag-protected { background: #fef3c7; color: #b45309; }
+  .card-footer { padding: 12px 16px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+  .btn { display: inline-block; padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; text-decoration: none; background: #2563eb; color: #fff; }
+  .btn:hover { background: #1d4ed8; }
+  .section-title { font-size: 18px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+</style>
+</head>
+<body>
+
+<h1>🎨 TaskManager — Galería de Mockups</h1>
+<p class="subtitle">Mockups HTML generados por el Agente B para revisión antes del pase a Agente C.</p>
+
+<div class="status-bar">
+  <span class="status-badge status-pending">⬜ 6 pendientes</span>
+  <span class="status-badge status-approved">✅ 0 aprobados</span>
+  <span class="status-badge status-changes">🔄 0 con cambios</span>
+</div>
+
+<h2 class="section-title">🔐 Vistas Públicas</h2>
+<div class="grid">
+  <div class="card">
+    <div class="card-preview">🔑</div>
+    <div class="card-body">
+      <h3>Login</h3>
+      <p>Inicio de sesión con email y contraseña</p>
+      <div class="card-meta">
+        <span class="tag tag-minimal">minimal</span>
+        <span class="tag tag-public">público</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span class="status-badge status-pending">Pendiente</span>
+      <a href="login.html" class="btn" target="_blank">Ver</a>
+    </div>
+  </div>
+</div>
+
+<h2 class="section-title">🔒 Vistas Protegidas</h2>
+<div class="grid">
+  <div class="card">
+    <div class="card-preview">📊</div>
+    <div class="card-body">
+      <h3>Dashboard</h3>
+      <p>Panel principal con widgets por rol</p>
+      <div class="card-meta">
+        <span class="tag tag-sidebar">sidebar-layout</span>
+        <span class="tag tag-protected">protegido</span>
+        <span class="tag">admin,manager,user</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span class="status-badge status-pending">Pendiente</span>
+      <a href="dashboard.html" class="btn" target="_blank">Ver</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-preview">📋</div>
+    <div class="card-body">
+      <h3>Listado de Tareas</h3>
+      <p>Tabla de tareas con filtros y acciones por rol</p>
+      <div class="card-meta">
+        <span class="tag tag-sidebar">sidebar-layout</span>
+        <span class="tag tag-protected">protegido</span>
+        <span class="tag">admin,manager,user</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span class="status-badge status-pending">Pendiente</span>
+      <a href="tasks-list.html" class="btn" target="_blank">Ver</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-preview">📝</div>
+    <div class="card-body">
+      <h3>Formulario de Tarea</h3>
+      <p>Creación y edición de tareas con validaciones</p>
+      <div class="card-meta">
+        <span class="tag tag-sidebar">sidebar-layout</span>
+        <span class="tag tag-protected">protegido</span>
+        <span class="tag">admin,manager</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span class="status-badge status-pending">Pendiente</span>
+      <a href="task-form.html" class="btn" target="_blank">Ver</a>
+    </div>
+  </div>
+</div>
+
+<h2 class="section-title">⚠️ Vistas de Error</h2>
+<div class="grid">
+  <div class="card">
+    <div class="card-preview">🚫</div>
+    <div class="card-body">
+      <h3>403 — Acceso Denegado</h3>
+      <p>No tienes permisos para esta sección</p>
+      <div class="card-meta">
+        <span class="tag tag-minimal">minimal</span>
+        <span class="tag tag-public">público</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span class="status-badge status-pending">Pendiente</span>
+      <a href="403.html" class="btn" target="_blank">Ver</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-preview">🔍</div>
+    <div class="card-body">
+      <h3>404 — No Encontrado</h3>
+      <p>La página solicitada no existe</p>
+      <div class="card-meta">
+        <span class="tag tag-minimal">minimal</span>
+        <span class="tag tag-public">público</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span class="status-badge status-pending">Pendiente</span>
+      <a href="404.html" class="btn" target="_blank">Ver</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-preview">💥</div>
+    <div class="card-body">
+      <h3>500 — Error Interno</h3>
+      <p>Ocurrió un error inesperado</p>
+      <div class="card-meta">
+        <span class="tag tag-minimal">minimal</span>
+        <span class="tag tag-public">público</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span class="status-badge status-pending">Pendiente</span>
+      <a href="500.html" class="btn" target="_blank">Ver</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

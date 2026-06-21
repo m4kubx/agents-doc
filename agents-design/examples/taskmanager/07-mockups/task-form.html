@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Tarea — Mockup</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f1f5f9; color: #1e293b; }
+  .mockup-meta { position: fixed; top: 0; right: 0; background: #0f172a; color: #e2e8f0; padding: 6px 14px; font-size: 12px; border-radius: 0 0 0 8px; z-index: 999; }
+  .container { max-width: 1280px; margin: 0 auto; min-height: 100vh; display: flex; }
+  .sidebar { width: 260px; background: #0f172a; color: #e2e8f0; display: flex; flex-direction: column; flex-shrink: 0; }
+  .sidebar-logo { padding: 20px; font-size: 18px; font-weight: 700; border-bottom: 1px solid #1e293b; color: #38bdf8; }
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+  .sidebar-nav a { display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: #94a3b8; text-decoration: none; font-size: 14px; }
+  .sidebar-nav a.active { background: #1e293b; color: #e2e8f0; border-right: 3px solid #38bdf8; }
+  .sidebar-user { padding: 16px 20px; border-top: 1px solid #1e293b; display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .sidebar-user .avatar { width: 32px; height: 32px; border-radius: 50%; background: #334155; display: flex; align-items: center; justify-content: center; }
+  .sidebar-role-badge { font-size: 11px; background: #1e293b; padding: 2px 8px; border-radius: 4px; color: #38bdf8; }
+  .main { flex: 1; display: flex; flex-direction: column; }
+  .header { background: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e2e8f0; }
+  .header h1 { font-size: 20px; font-weight: 600; }
+  .content { padding: 24px; flex: 1; max-width: 720px; }
+  .card { background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; padding: 24px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 4px; color: #374151; }
+  .form-control { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; }
+  .form-control:focus { outline: 2px solid #2563eb; outline-offset: -1px; }
+  .form-error .form-control { border-color: #dc2626; }
+  .form-error .error-text { font-size: 12px; color: #dc2626; margin-top: 4px; }
+  textarea.form-control { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-actions { display: flex; gap: 8px; justify-content: flex-end; padding-top: 16px; border-top: 1px solid #e2e8f0; margin-top: 24px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; border: none; cursor: default; }
+  .btn-primary { background: #2563eb; color: #fff; }
+  .btn-secondary { background: #e2e8f0; color: #475569; }
+  .btn-danger { background: #dc2626; color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="mockup-meta">Mockup <strong>Formulario de Tarea</strong> | Rol: <strong>Admin</strong> | Layout: <strong>sidebar-layout</strong></div>
+
+<div class="container">
+  <div class="sidebar">
+    <div class="sidebar-logo">TaskManager</div>
+    <nav class="sidebar-nav">
+      <a href="#">📊 Dashboard</a>
+      <a href="#" class="active">📋 Tareas</a>
+      <a href="#">👥 Usuarios</a>
+      <a href="#">📈 Reportes</a>
+      <a href="#">⚙️ Configuración</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="avatar">👤</div>
+      <div>
+        <div>Admin Usuario</div>
+        <div class="sidebar-role-badge">admin</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h1>Nueva Tarea</h1>
+      <span style="color:#64748b;font-size:13px;">Creando como Admin</span>
+    </div>
+
+    <div class="content">
+      <div class="card">
+        <div class="form-group">
+          <label>Título *</label>
+          <input class="form-control" type="text" placeholder="Ej: Implementar módulo de reportes" value="Implementar autenticación JWT">
+        </div>
+
+        <div class="form-group">
+          <label>Descripción</label>
+          <textarea class="form-control" placeholder="Describe la tarea en detalle...">Implementar middleware de autenticación JWT en el backend, incluyendo login, registro, refresh token y logout.</textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Estado</label>
+            <select class="form-control">
+              <option>Pendiente</option>
+              <option selected>En Progreso</option>
+              <option>Completada</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Prioridad</label>
+            <select class="form-control">
+              <option selected>Alta</option>
+              <option>Media</option>
+              <option>Baja</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Asignar a</label>
+          <select class="form-control">
+            <option>Seleccionar usuario...</option>
+            <option selected>Carlos M. (carlos@example.com)</option>
+            <option>Ana G. (ana@example.com)</option>
+          </select>
+        </div>
+
+        <!-- Error state demo -->
+        <details style="margin-bottom:16px;">
+          <summary style="font-size:12px;color:#94a3b8;cursor:pointer;">Toggle: Error State</summary>
+          <div class="form-group form-error" style="margin-top:12px;">
+            <label>Título *</label>
+            <input class="form-control" type="text" value="">
+            <div class="error-text">⚠️ El título es obligatorio</div>
+          </div>
+        </details>
+
+        <div class="form-actions">
+          <button class="btn btn-secondary">Cancelar</button>
+          <button class="btn btn-primary">💾 Guardar Tarea</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

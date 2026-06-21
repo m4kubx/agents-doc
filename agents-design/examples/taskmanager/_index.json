@@ -17,6 +17,34 @@
     "route_guards": 8,
     "error_views": 3
   },
-  "handoff_generated": true,
-  "handoff_file": "_handoff-to-c.md"
+  "mockups": {
+    "total": 7,
+    "files": [
+      { "filename": "login.html", "view_id": "view-login", "title": "Login", "layout": "minimal", "roles": ["public"], "states_shown": ["normal", "loading", "error"] },
+      { "filename": "dashboard.html", "view_id": "view-dashboard", "title": "Dashboard", "layout": "sidebar-layout", "roles": ["admin", "manager", "user"], "states_shown": ["normal", "loading", "empty"] },
+      { "filename": "tasks-list.html", "view_id": "view-tasks-list", "title": "Listado de Tareas", "layout": "sidebar-layout", "roles": ["admin", "manager", "user"], "states_shown": ["normal"] },
+      { "filename": "task-form.html", "view_id": "view-task-form", "title": "Formulario de Tarea", "layout": "sidebar-layout", "roles": ["admin", "manager"], "states_shown": ["normal", "error"] },
+      { "filename": "403.html", "view_id": "view-403", "title": "403 Acceso Denegado", "layout": "minimal", "roles": ["public"], "states_shown": ["normal"] },
+      { "filename": "404.html", "view_id": "view-404", "title": "404 No Encontrado", "layout": "minimal", "roles": ["public"], "states_shown": ["normal"] },
+      { "filename": "500.html", "view_id": "view-500", "title": "500 Error Interno", "layout": "minimal", "roles": ["public"], "states_shown": ["normal"] }
+    ],
+    "gallery_index": "07-mockups/_index.html"
+  },
+  "flows": {
+    "total": 3,
+    "files": [
+      { "filename": "user-journey-map.md", "title": "Mapa de Viaje del Usuario", "type": "user-journey", "related_views": ["view-login", "view-dashboard", "view-tasks-list", "view-task-form"] },
+      { "filename": "auth-flow.md", "title": "Flujo de Autenticación", "type": "auth-flow", "related_views": ["view-login"] },
+      { "filename": "crud-flow.md", "title": "Flujo CRUD de Tareas", "type": "crud-flow", "related_views": ["view-tasks-list", "view-task-form"] }
+    ]
+  },
+  "approval": {
+    "status": "pending",
+    "checklist_file": "09-approval/design-review-checklist.md",
+    "status_file": "09-approval/approval-status.json",
+    "approved_at": null,
+    "reviewer": null
+  },
+  "handoff_generated": false,
+  "handoff_file": null
 }

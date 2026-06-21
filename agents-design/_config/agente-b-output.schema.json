@@ -3,7 +3,7 @@
   "title": "Agente B - Design Specification Output",
   "description": "Schema que valida el output generado por el Agente B",
   "type": "object",
-  "required": ["project", "views", "navigation", "auth", "components", "error_views"],
+  "required": ["project", "views", "navigation", "auth", "components", "error_views", "mockups", "flows", "approval"],
   "properties": {
     "project": {
       "type": "object",
@@ -125,6 +125,110 @@
     "handoff_generated": {
       "type": "boolean",
       "description": "Indica si se genero el archivo _handoff-to-c.md"
+    },
+    "mockups": {
+      "type": "object",
+      "description": "Mockups HTML generados por el Agente B",
+      "required": ["total", "files", "gallery_index"],
+      "properties": {
+        "total": { "type": "integer", "description": "Numero total de mockups" },
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["filename", "view_id", "title", "layout", "roles"],
+            "properties": {
+              "filename": { "type": "string" },
+              "view_id": { "type": "string" },
+              "title": { "type": "string" },
+              "layout": { "type": "string", "enum": ["sidebar-layout", "minimal", "blank"] },
+              "roles": { "type": "array", "items": { "type": "string" } },
+              "states_shown": {
+                "type": "array",
+                "items": { "type": "string", "enum": ["loading", "empty", "error", "success", "normal"] }
+              }
+            }
+          }
+        },
+        "gallery_index": { "type": "string", "description": "Ruta al archivo _index.html de la galeria" }
+      }
+    },
+    "flows": {
+      "type": "object",
+      "description": "Flujos de usuario completos generados por el Agente B",
+      "required": ["total", "files"],
+      "properties": {
+        "total": { "type": "integer" },
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["filename", "title", "type", "related_views"],
+            "properties": {
+              "filename": { "type": "string" },
+              "title": { "type": "string" },
+              "type": { "type": "string", "enum": ["user-journey", "auth-flow", "crud-flow", "admin-flow", "navigation-flow"] },
+              "related_views": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "description": "Estado del approval gate para el paso a Agente C",
+      "required": ["status", "checklist_file", "status_file"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["pending", "in-review", "changes-requested", "approved"],
+          "description": "Estado de aprobacion del diseno"
+        },
+        "checklist_file": { "type": "string", "description": "Ruta al design-review-checklist.md" },
+        "status_file": { "type": "string", "description": "Ruta al approval-status.json" },
+        "approved_at": { "type": ["string", "null"], "description": "Fecha de aprobacion" },
+        "reviewer": { "type": ["string", "null"], "description": "Nombre del revisor humano" }
+      }
+    },
+    "tdd_strategy": {
+      "type": "object",
+      "description": "Estrategia TDD que el Agente C debe seguir",
+      "required": ["required", "coverage_minimum", "test_layers"],
+      "properties": {
+        "required": {
+          "type": "boolean",
+          "description": "Si es obligatorio usar TDD (siempre true)"
+        },
+        "coverage_minimum": {
+          "type": "object",
+          "required": ["backend", "frontend"],
+          "properties": {
+            "backend": { "type": "integer", "minimum": 0, "maximum": 100, "description": "Cobertura minima backend %" },
+            "frontend": { "type": "integer", "minimum": 0, "maximum": 100, "description": "Cobertura minima frontend %" }
+          }
+        },
+        "test_layers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["unit", "integration", "component", "e2e"]
+          },
+          "description": "Capas de testing requeridas"
+        },
+        "rbac_tests_required": {
+          "type": "boolean",
+          "description": "Tests de permisos por cada endpoint × cada rol"
+        },
+        "ui_tests_required": {
+          "type": "boolean",
+          "description": "Tests de componentes UI (botones, estados, navegacion)"
+        },
+        "templates_referenced": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Plantillas TDD referenciadas en el handoff"
+        }
+      }
     }
   }
 }

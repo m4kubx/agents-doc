@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Mockup</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f1f5f9; color: #1e293b; }
+  .mockup-meta { position: fixed; top: 0; right: 0; background: #0f172a; color: #e2e8f0; padding: 6px 14px; font-size: 12px; border-radius: 0 0 0 8px; z-index: 999; }
+  .container { max-width: 1280px; margin: 0 auto; min-height: 100vh; display: flex; }
+  .sidebar { width: 260px; background: #0f172a; color: #e2e8f0; display: flex; flex-direction: column; flex-shrink: 0; }
+  .sidebar-logo { padding: 20px; font-size: 18px; font-weight: 700; border-bottom: 1px solid #1e293b; color: #38bdf8; }
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+  .sidebar-nav a { display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: #94a3b8; text-decoration: none; font-size: 14px; }
+  .sidebar-nav a.active { background: #1e293b; color: #e2e8f0; border-right: 3px solid #38bdf8; }
+  .sidebar-user { padding: 16px 20px; border-top: 1px solid #1e293b; display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .sidebar-user .avatar { width: 32px; height: 32px; border-radius: 50%; background: #334155; display: flex; align-items: center; justify-content: center; }
+  .sidebar-role-badge { font-size: 11px; background: #1e293b; padding: 2px 8px; border-radius: 4px; color: #38bdf8; }
+  .main { flex: 1; display: flex; flex-direction: column; }
+  .header { background: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e2e8f0; }
+  .header h1 { font-size: 20px; font-weight: 600; }
+  .content { padding: 24px; flex: 1; }
+  .widgets { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .widget { background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; padding: 20px; }
+  .widget-label { font-size: 13px; color: #64748b; margin-bottom: 4px; }
+  .widget-value { font-size: 28px; font-weight: 700; }
+  .widget-change { font-size: 12px; margin-top: 4px; }
+  .widget-change.up { color: #065f46; }
+  .widget-change.down { color: #991b1b; }
+  .card { background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; margin-bottom: 24px; }
+  .card-header { padding: 16px 20px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; }
+  .card-header h2 { font-size: 16px; }
+  .card-body { padding: 20px; }
+  .skeleton { background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 4px; }
+  .skeleton-row { height: 16px; margin-bottom: 12px; width: 100%; }
+  .skeleton-row-sm { height: 14px; width: 60%; margin-bottom: 10px; }
+  .state-empty { text-align: center; padding: 40px 20px; }
+  .state-empty .icon { font-size: 40px; margin-bottom: 12px; opacity: 0.4; }
+  .state-empty h3 { font-size: 16px; color: #64748b; margin-bottom: 6px; }
+  .state-empty p { font-size: 14px; color: #94a3b8; margin-bottom: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; border: none; cursor: default; background: #2563eb; color: #fff; text-decoration: none; }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+</style>
+</head>
+<body>
+
+<div class="mockup-meta">Mockup <strong>Dashboard</strong> | Rol: <strong>Admin</strong> | Layout: <strong>sidebar-layout</strong></div>
+
+<div class="container">
+  <div class="sidebar">
+    <div class="sidebar-logo">TaskManager</div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active">📊 Dashboard</a>
+      <a href="#">📋 Tareas</a>
+      <a href="#">👥 Usuarios</a>
+      <a href="#">📈 Reportes</a>
+      <a href="#">⚙️ Configuración</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="avatar">👤</div>
+      <div>
+        <div>Admin Usuario</div>
+        <div class="sidebar-role-badge">admin</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h1>Dashboard</h1>
+      <div><span style="font-size:13px;color:#64748b;">Admin · TaskManager v1.0</span></div>
+    </div>
+
+    <div class="content">
+      <div class="widgets">
+        <div class="widget">
+          <div class="widget-label">Total Tareas</div>
+          <div class="widget-value">142</div>
+          <div class="widget-change up">↑ 12% vs mes anterior</div>
+        </div>
+        <div class="widget">
+          <div class="widget-label">Completadas</div>
+          <div class="widget-value">87</div>
+          <div class="widget-change up">↑ 8% vs mes anterior</div>
+        </div>
+        <div class="widget">
+          <div class="widget-label">En Progreso</div>
+          <div class="widget-value">38</div>
+          <div class="widget-change down">↓ 3% vs mes anterior</div>
+        </div>
+        <div class="widget">
+          <div class="widget-label">Usuarios Activos</div>
+          <div class="widget-value">12</div>
+          <div class="widget-change up">↑ 2 nuevos este mes</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Tareas Recientes</h2>
+          <a href="#" class="btn" style="padding:6px 12px;font-size:13px;">Ver todas</a>
+        </div>
+        <div class="card-body" style="padding:0;">
+          <table style="width:100%;border-collapse:collapse;font-size:14px;">
+            <tr style="background:#f8fafc;">
+              <th style="text-align:left;padding:10px 16px;font-weight:600;color:#64748b;">Título</th>
+              <th style="text-align:left;padding:10px 16px;font-weight:600;color:#64748b;">Estado</th>
+              <th style="text-align:left;padding:10px 16px;font-weight:600;color:#64748b;">Prioridad</th>
+              <th style="text-align:left;padding:10px 16px;font-weight:600;color:#64748b;">Asignado</th>
+            </tr>
+            <tr><td style="padding:10px 16px;border-top:1px solid #e2e8f0;">Implementar autenticación JWT</td><td style="padding:10px 16px;"><span style="background:#dbeafe;color:#1d4ed8;padding:2px 8px;border-radius:999px;font-size:12px;">En progreso</span></td><td style="padding:10px 16px;"><span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:999px;font-size:12px;">Alta</span></td><td style="padding:10px 16px;color:#64748b;">Carlos M.</td></tr>
+            <tr><td style="padding:10px 16px;border-top:1px solid #e2e8f0;">Diseñar dashboard principal</td><td style="padding:10px 16px;"><span style="background:#d1fae5;color:#065f46;padding:2px 8px;border-radius:999px;font-size:12px;">Completada</span></td><td style="padding:10px 16px;"><span style="background:#fef3c7;color:#b45309;padding:2px 8px;border-radius:999px;font-size:12px;">Media</span></td><td style="padding:10px 16px;color:#64748b;">Ana G.</td></tr>
+            <tr><td style="padding:10px 16px;border-top:1px solid #e2e8f0;">Configurar CI/CD</td><td style="padding:10px 16px;"><span style="background:#fef3c7;color:#b45309;padding:2px 8px;border-radius:999px;font-size:12px;">Pendiente</span></td><td style="padding:10px 16px;"><span style="background:#e2e8f0;color:#475569;padding:2px 8px;border-radius:999px;font-size:12px;">Baja</span></td><td style="padding:10px 16px;color:#64748b;">—</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <details style="margin-top:16px;">
+        <summary style="font-size:12px;color:#94a3b8;cursor:pointer;">Toggle: Skeleton Loading State</summary>
+        <div class="card" style="margin-top:12px;">
+          <div class="card-header"><h2>Cargando...</h2></div>
+          <div class="card-body">
+            <div class="skeleton skeleton-row"></div>
+            <div class="skeleton skeleton-row-sm"></div>
+            <div class="skeleton skeleton-row"></div>
+            <div class="skeleton skeleton-row-sm"></div>
+          </div>
+        </div>
+      </details>
+
+      <details style="margin-top:16px;">
+        <summary style="font-size:12px;color:#94a3b8;cursor:pointer;">Toggle: Empty State</summary>
+        <div class="card" style="margin-top:12px;">
+          <div class="state-empty">
+            <div class="icon">📋</div>
+            <h3>No hay tareas aún</h3>
+            <p>Crea tu primera tarea para empezar a gestionar tu equipo.</p>
+            <a href="#" class="btn">+ Crear Tarea</a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

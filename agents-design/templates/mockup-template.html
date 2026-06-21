@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[NOMBRE_VISTA] — Mockup</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f1f5f9; color: #1e293b; }
+  .mockup-container { max-width: 1280px; margin: 0 auto; min-height: 100vh; display: flex; }
+
+  /* Meta bar */
+  .mockup-meta { position: fixed; top: 0; right: 0; background: #0f172a; color: #e2e8f0; padding: 6px 14px; font-size: 12px; border-radius: 0 0 0 8px; z-index: 999; display: flex; gap: 16px; }
+  .mockup-meta span { opacity: 0.7; }
+  .mockup-meta strong { color: #38bdf8; }
+
+  /* SIDEBAR */
+  .sidebar { width: 260px; background: #0f172a; color: #e2e8f0; display: flex; flex-direction: column; flex-shrink: 0; }
+  .sidebar-logo { padding: 20px; font-size: 18px; font-weight: 700; border-bottom: 1px solid #1e293b; color: #38bdf8; }
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+  .sidebar-nav a { display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: #94a3b8; text-decoration: none; font-size: 14px; transition: all 0.15s; }
+  .sidebar-nav a:hover, .sidebar-nav a.active { background: #1e293b; color: #e2e8f0; }
+  .sidebar-nav a.active { border-right: 3px solid #38bdf8; }
+  .sidebar-user { padding: 16px 20px; border-top: 1px solid #1e293b; display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .sidebar-user .avatar { width: 32px; height: 32px; border-radius: 50%; background: #334155; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #94a3b8; }
+  .sidebar-role-badge { font-size: 11px; background: #1e293b; padding: 2px 8px; border-radius: 4px; color: #38bdf8; }
+
+  /* MAIN */
+  .main { flex: 1; display: flex; flex-direction: column; }
+  .header { background: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e2e8f0; }
+  .header h1 { font-size: 20px; font-weight: 600; }
+  .header-actions { display: flex; gap: 8px; }
+
+  .content { padding: 24px; flex: 1; }
+
+  /* BUTTONS */
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; border: none; cursor: default; transition: all 0.15s; }
+  .btn-primary { background: #2563eb; color: #fff; }
+  .btn-secondary { background: #e2e8f0; color: #475569; }
+  .btn-danger { background: #dc2626; color: #fff; }
+  .btn-ghost { background: transparent; color: #475569; }
+  .btn-sm { padding: 6px 12px; font-size: 13px; }
+
+  /* CARD */
+  .card { background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; }
+  .card-header { padding: 16px 20px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; }
+  .card-body { padding: 20px; }
+
+  /* TABLE */
+  .table-wrapper { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; padding: 10px 12px; font-weight: 600; color: #64748b; border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
+  td { padding: 10px 12px; border-bottom: 1px solid #f1f5f9; }
+  tr:hover td { background: #f8fafc; }
+
+  /* BADGE */
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+  .badge-pending { background: #fef3c7; color: #b45309; }
+  .badge-in-progress { background: #dbeafe; color: #1d4ed8; }
+  .badge-done { background: #d1fae5; color: #065f46; }
+  .badge-high { background: #fee2e2; color: #991b1b; }
+  .badge-medium { background: #fef3c7; color: #b45309; }
+  .badge-low { background: #e2e8f0; color: #475569; }
+
+  /* STATES */
+  .state-loading, .state-empty, .state-error { text-align: center; padding: 60px 20px; }
+  .state-loading .spinner { width: 36px; height: 36px; border: 3px solid #e2e8f0; border-top-color: #2563eb; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+  .state-empty .empty-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
+  .state-empty h3 { font-size: 16px; color: #64748b; margin-bottom: 6px; }
+  .state-empty p { font-size: 14px; color: #94a3b8; }
+  .state-error { color: #dc2626; }
+  .state-error .error-icon { font-size: 48px; margin-bottom: 12px; }
+
+  /* FORM */
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 4px; color: #374151; }
+  .form-control { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; background: #fff; }
+  .form-control:focus { outline: 2px solid #2563eb; outline-offset: -1px; }
+  .form-error .form-control { border-color: #dc2626; }
+  .form-error .error-text { font-size: 12px; color: #dc2626; margin-top: 4px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* MODAL BACKDROP */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+  .modal { background: #fff; border-radius: 12px; max-width: 480px; width: 90%; padding: 24px; }
+  .modal h2 { font-size: 18px; margin-bottom: 12px; }
+  .modal p { color: #64748b; font-size: 14px; margin-bottom: 20px; }
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+
+  /* SKELETON */
+  .skeleton { background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 4px; }
+  .skeleton-row { height: 20px; margin-bottom: 12px; width: 100%; }
+  .skeleton-row-sm { height: 14px; width: 60%; margin-bottom: 10px; }
+
+  /* LAYOUT MINIMAL */
+  .minimal-layout { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; }
+  .minimal-card { background: #fff; border-radius: 12px; padding: 32px; max-width: 420px; width: 100%; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+</style>
+</head>
+<body>
+
+<div class="mockup-meta">
+  <span>Mockup</span> <strong>[NOMBRE_VISTA]</strong>
+  <span>|</span> <span>Rol: <strong>[ROL]</strong></span>
+  <span>|</span> <span>Layout: <strong>[LAYOUT]</strong></span>
+</div>
+
+<div class="mockup-container">
+  <!--
+    SIDEBAR — Incluir solo si layout == "sidebar-layout"
+  -->
+  <div class="sidebar">
+    <div class="sidebar-logo">[NOMBRE_PROYECTO]</div>
+    <nav class="sidebar-nav">
+      <a href="#" class="[ACTIVE_CLASS]">📊 Dashboard</a>
+      <a href="#">📋 Tareas</a>
+      <a href="#">👥 Usuarios</a>
+      <a href="#">📈 Reportes</a>
+      <a href="#">⚙️ Configuración</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="avatar">U</div>
+      <div>
+        <div style="font-size: 13px;">[NOMBRE_USUARIO]</div>
+        <div class="sidebar-role-badge">[ROL]</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h1>[TITULO_VISTA]</h1>
+      <div class="header-actions">
+        [BOTONES_ACCION]
+      </div>
+    </div>
+
+    <div class="content">
+      [ESTADOS_VISTA]
+
+      [CONTENIDO_PRINCIPAL]
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

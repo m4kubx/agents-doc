@@ -1,0 +1,29 @@
+{
+  "project": "TaskManager",
+  "version": "1.0.0",
+  "status": "pending",
+  "reviewer": null,
+  "review_date": null,
+  "mockups": {
+    "login.html": "pending",
+    "dashboard.html": "pending",
+    "tasks-list.html": "pending",
+    "task-form.html": "pending",
+    "403.html": "pending",
+    "404.html": "pending",
+    "500.html": "pending"
+  },
+  "flows": {
+    "user-journey-map.md": "pending",
+    "auth-flow.md": "pending",
+    "task-crud-flow.md": "pending"
+  },
+  "decisions": {
+    "all_mockups_correct": null,
+    "all_flows_complete": null,
+    "changes_requested": null,
+    "approved_for_implementation": null
+  },
+  "changes_requested": [],
+  "notes": ""
+}
